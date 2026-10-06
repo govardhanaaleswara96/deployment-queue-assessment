@@ -1,7 +1,5 @@
-const App = () => {
-  return <h1 className="flex justify-center items-center h-screen text-3xl font-bold">
- Please go to the exercise folder and open the example1.tsx file to complete the exercise.
-  </h1>;
-};
+import Example3 from "./exercise/example3";
+
+const App = () => <Example3 />;
 
 export default App;

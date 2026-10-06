@@ -82,25 +82,17 @@
  */
 import { useState } from "react";
 
-export function useDeploymentFilters<T>(deployments: T[]) {
+export function useDeploymentFilters<T extends { application: string }>(deployments: T[]) {
   const [search, setSearch] = useState("");
-
-  /**
-   * TODO
-   *
-   * Return:
-   *
-   * {
-   *   search,
-   *   setSearch,
-   *   filteredDeployments
-   * }
-   */
+  const normalizedSearch = search.toLowerCase();
+  const filteredDeployments = deployments.filter((deployment) =>
+    deployment.application.toLowerCase().includes(normalizedSearch),
+  );
 
   return {
     search,
     setSearch,
-    filteredDeployments: deployments,
+    filteredDeployments,
   };
 }
 
